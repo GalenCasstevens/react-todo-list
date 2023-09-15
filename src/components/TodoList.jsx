@@ -1,20 +1,20 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import TodoItem from './TodoItem';
 
-function TodoList({ todos }) {
-	if (todos && todos !== null) {
-		return (
-			<>
-				{todos.map((todo) => (
-					<ListGroup.Item>
-						<TodoItem todo={todo} />
-					</ListGroup.Item>
-				))}
-			</>
-		);
+function TodoList({ todos, handleDelete }) {
+	if (!todos || todos.length === 0) {
+		return <ListGroup.Item>No Todos Yet</ListGroup.Item>;
 	}
 
-	return <p>No Todos Yet</p>;
+	return (
+		<>
+			{todos.map((todo) => (
+				<ListGroup.Item>
+					<TodoItem key={todo.id} todo={todo} handleDelete={handleDelete} />
+				</ListGroup.Item>
+			))}
+		</>
+	);
 }
 
 export default TodoList;
