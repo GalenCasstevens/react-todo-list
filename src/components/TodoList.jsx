@@ -1,7 +1,7 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import TodoItem from './TodoItem';
 
-function TodoList({ todos, handleDelete }) {
+function TodoList({ todos }) {
 	if (!todos || todos.length === 0) {
 		return <ListGroup.Item>No Todos Yet</ListGroup.Item>;
 	}
@@ -10,7 +10,7 @@ function TodoList({ todos, handleDelete }) {
 		<>
 			{todos.map((todo) => (
 				<ListGroup.Item>
-					<TodoItem key={todo.id} todo={todo} handleDelete={handleDelete} />
+					<TodoItem key={todo.id} todo={todo} />
 				</ListGroup.Item>
 			))}
 		</>

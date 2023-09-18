@@ -1,8 +1,12 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { useDispatch } from 'react-redux';
+import { remove } from '../features/todos/todoSlice';
 
-function TodoItem({ todo, handleDelete }) {
+function TodoItem({ todo }) {
+	const dispatch = useDispatch();
+
 	return (
 		<Row>
 			<Col md={10}>{todo.text}</Col>
@@ -10,7 +14,7 @@ function TodoItem({ todo, handleDelete }) {
 				<Button
 					className="float-end"
 					variant="danger"
-					onClick={() => handleDelete(todo.id)}
+					onClick={() => dispatch(remove(todo.id))}
 				>
 					Delete
 				</Button>
